@@ -1,9 +1,9 @@
 Go-Nolo
 =========
 
-`go-nolo` is the set of common tools for interacting with nolo plugins.
-At the moment, it can parse plugin output into a common plugin
-structs.
+`go-nolo` is the set of common tools for interacting with nolo meter.
+At the moment, it can parse meter output into a common `nolo.Meter`
+struct.
 
 LICENSE
 -------

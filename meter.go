@@ -16,17 +16,17 @@ func (m Metric) ToMap() map[string]string {
 	return result
 }
 
-type Plugin struct {
+type Meter struct {
 	Identifier string
 	Metrics    []Metric
 }
 
-func (p Plugin) ToMap() map[string][]map[string]string {
+func (p Meter) ToMap() map[string][]map[string]string {
 	result := make(map[string][]map[string]string)
 	length := len(p.Metrics)
 	values := make([]map[string]string, length)
 	for i, m := range p.Metrics {
-	 	values[i] = m.ToMap()
+		values[i] = m.ToMap()
 	}
 	result[p.Identifier] = values
 	return result
