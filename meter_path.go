@@ -1,5 +1,11 @@
 package nolo
 
+import (
+	"os"
+	"os/exec"
+	"path/filepath"
+)
+
 type MeterPath string
 
 func (p MeterPath) Name() string {
@@ -58,10 +64,10 @@ func (p MeterPath) Expand() ([]MeterPath, error) {
 	}
 }
 
-func (p MeterPath) Execute() (*nolo.Meter, error) {
+func (p MeterPath) Execute() (*Meter, error) {
 	out, err := exec.Command(string(p)).Output()
 	if err != nil {
 		return nil, err
 	}
-	return nolo.Parse(p.Name(), string(out)), nil
+	return Parse(p.Name(), string(out)), nil
 }
