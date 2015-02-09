@@ -12,7 +12,7 @@ type Meter struct {
 }
 
 type MeterList []*Meter
-type MeterStringMap map[string][]map[string]string
+type MeterMap map[string][]map[string]string
 
 func (m Metric) ToMap() map[string]string {
 	result := make(map[string]string)
@@ -24,18 +24,7 @@ func (m Metric) ToMap() map[string]string {
 	return result
 }
 
-func (p Meter) ToStringMap() MeterStringMap {
-	result := make(map[string][]map[string]string)
-	length := len(p.Metrics)
-	values := make([]map[string]string, length)
-	for i, m := range p.Metrics {
-		values[i] = m.ToMap()
-	}
-	result[p.Identifier] = values
-	return result
-}
-
-func (ml MeterList) ToStringMap() MeterStringMap {
+func (ml MeterList) ToMeterMap() MeterMap {
 	result := make(map[string][]map[string]string)
 	for _, mr := range ml {
 		length := len(mr.Metrics)
