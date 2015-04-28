@@ -1,9 +1,11 @@
 package nolo
 
+type MetricMetadata map[string]string
+
 type Metric struct {
 	Identifier string
 	Value      string
-	Metadata   map[string]string
+	Metadata   MetricMetadata
 }
 
 type Meter struct {
